@@ -1,0 +1,1967 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Flores Para Ti 🌻</title>
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:Georgia, "Times New Roman", serif;
+    background:#02030d;
+}
+
+
+/* =====================================================
+   PANTALLA INICIAL
+===================================================== */
+
+.intro{
+    position:fixed;
+    inset:0;
+
+    z-index:9999;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #29145d 0%,
+            #0b0928 40%,
+            #02030c 100%
+        );
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease,
+        visibility 1.5s ease;
+}
+
+.intro.hide{
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.15);
+}
+
+.intro h1{
+    font-size:clamp(40px,11vw,68px);
+
+    line-height:.95;
+
+    color:#ffd72f;
+
+    text-shadow:
+        0 0 8px #fff,
+        0 0 18px #ffd000,
+        0 0 40px #ff9d00,
+        0 0 80px #ff7300;
+
+    animation:titleGlow 2s infinite alternate;
+}
+
+.intro p{
+    margin-top:20px;
+
+    color:#fff0ae;
+
+    font-family:Arial,sans-serif;
+
+    font-size:12px;
+
+    letter-spacing:4px;
+}
+
+.open{
+    margin-top:35px;
+
+    padding:15px 30px;
+
+    border:1px solid #ffd52d;
+
+    border-radius:50px;
+
+    background:rgba(255,200,0,.12);
+
+    color:#fff;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 15px rgba(255,205,0,.7),
+        inset 0 0 15px rgba(255,205,0,.12);
+
+    transition:.3s;
+}
+
+.open:hover{
+    transform:scale(1.08);
+
+    background:rgba(255,205,0,.22);
+}
+
+
+/* =====================================================
+   GALAXIA PRINCIPAL
+===================================================== */
+
+.galaxy{
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+    overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% 70%,
+            rgba(255,185,30,.22),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            ellipse at 10% 30%,
+            rgba(110,35,255,.55),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            ellipse at 90% 50%,
+            rgba(25,90,255,.45),
+            transparent 40%
+        ),
+
+        radial-gradient(
+            ellipse at 45% 100%,
+            rgba(220,30,170,.30),
+            transparent 40%
+        ),
+
+        linear-gradient(
+            180deg,
+            #01020b,
+            #05061c 40%,
+            #09051d 75%,
+            #010107
+        );
+}
+
+
+/* =====================================================
+   NEBULOSAS
+===================================================== */
+
+.nebula{
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(60px);
+
+    pointer-events:none;
+
+    opacity:.35;
+}
+
+.n1{
+    width:550px;
+    height:200px;
+
+    background:#713cff;
+
+    top:12%;
+    left:-220px;
+
+    transform:rotate(-25deg);
+}
+
+.n2{
+    width:550px;
+    height:200px;
+
+    background:#e331c0;
+
+    right:-240px;
+    top:43%;
+
+    transform:rotate(30deg);
+}
+
+.n3{
+    width:550px;
+    height:170px;
+
+    background:#187cff;
+
+    left:-180px;
+    bottom:5%;
+
+    transform:rotate(20deg);
+}
+
+
+/* =====================================================
+   ESTRELLAS
+===================================================== */
+
+#stars{
+    position:absolute;
+    inset:0;
+}
+
+.star{
+    position:absolute;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 5px white,
+        0 0 12px #9fd7ff;
+
+    animation:
+        twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+
+    from{
+        opacity:.15;
+        transform:scale(.5);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.5);
+    }
+}
+
+
+/* =====================================================
+   ESTRELLAS GRANDES
+===================================================== */
+
+.sparkle{
+    position:absolute;
+
+    color:#fff;
+
+    font-size:24px;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 20px #ffd83b;
+
+    animation:
+        sparkleAnimation 2s infinite alternate;
+}
+
+@keyframes sparkleAnimation{
+
+    from{
+        opacity:.2;
+        transform:scale(.6) rotate(0deg);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1.3) rotate(45deg);
+    }
+}
+
+
+/* =====================================================
+   ORBITA GALÁCTICA
+===================================================== */
+
+.orbit{
+    position:absolute;
+
+    width:460px;
+    height:460px;
+
+    left:50%;
+    top:58%;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-20deg);
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,200,40,.18);
+
+    box-shadow:
+        0 0 60px rgba(255,190,30,.12),
+        inset 0 0 60px rgba(255,170,20,.08);
+}
+
+.orbit::before{
+    content:"";
+
+    position:absolute;
+
+    inset:35px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(180,90,255,.18);
+}
+
+.orbit::after{
+    content:"";
+
+    position:absolute;
+
+    inset:75px;
+
+    border-radius:50%;
+
+    border:
+        1px solid rgba(255,210,50,.15);
+}
+
+
+/* =====================================================
+   TITULO
+===================================================== */
+
+.header{
+    position:absolute;
+
+    top:25px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    z-index:30;
+}
+
+.header h1{
+    font-size:clamp(40px,10vw,60px);
+
+    line-height:.9;
+
+    font-style:italic;
+
+    color:#ffd83b;
+
+    text-shadow:
+        0 0 8px #fff,
+        0 0 18px #ffd000,
+        0 0 40px #ff9d00;
+}
+
+.header p{
+    margin-top:15px;
+
+    color:#ffeeb0;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    text-shadow:
+        0 0 10px #ffd83b;
+}
+
+
+/* =====================================================
+   REPRODUCTOR
+===================================================== */
+
+.player{
+    position:absolute;
+
+    z-index:100;
+
+    top:143px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:90%;
+
+    max-width:390px;
+
+    padding:13px 15px;
+
+    border-radius:25px;
+
+    background:
+        rgba(17,10,30,.72);
+
+    border:
+        1px solid rgba(255,205,45,.55);
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 0 25px rgba(255,190,20,.16),
+        inset 0 0 25px rgba(255,210,50,.05);
+}
+
+.player-content{
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.album{
+    width:50px;
+    height:50px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    font-size:26px;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffdf29,
+            #ff9d00
+        );
+
+    box-shadow:
+        0 0 10px #ffd000,
+        0 0 25px rgba(255,190,0,.5);
+}
+
+.song{
+    flex:1;
+
+    min-width:0;
+}
+
+.song-title{
+    color:#fff0a0;
+
+    font-size:14px;
+
+    font-weight:bold;
+}
+
+.song-sub{
+    margin-top:4px;
+
+    color:#aaa;
+
+    font-family:Arial,sans-serif;
+
+    font-size:10px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.play{
+    width:42px;
+    height:42px;
+
+    flex-shrink:0;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#ffd21c;
+
+    color:#352000;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 0 12px #ffd000,
+        0 0 25px rgba(255,190,0,.35);
+
+    transition:.2s;
+}
+
+.play:hover{
+    transform:scale(1.08);
+}
+
+.progress{
+    height:5px;
+
+    margin-top:13px;
+
+    border-radius:10px;
+
+    background:#403a45;
+
+    overflow:hidden;
+
+    cursor:pointer;
+}
+
+.progress-bar{
+    width:0%;
+
+    height:100%;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffad00,
+            #ffe02e
+        );
+
+    box-shadow:
+        0 0 8px #ffd000;
+
+    transition:
+        width .15s linear;
+}
+
+.times{
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:5px;
+
+    color:#aaa;
+
+    font-family:Arial,sans-serif;
+
+    font-size:9px;
+}
+
+
+/* =====================================================
+   HALO DEL RAMO
+===================================================== */
+
+.halo{
+    position:absolute;
+
+    width:390px;
+    height:390px;
+
+    left:50%;
+    top:59%;
+
+    transform:
+        translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,214,50,.28),
+            rgba(255,170,0,.10) 40%,
+            transparent 70%
+        );
+
+    filter:blur(5px);
+
+    animation:
+        haloAnimation 4s infinite alternate;
+}
+
+@keyframes haloAnimation{
+
+    from{
+        transform:
+            translate(-50%,-50%)
+            scale(.92);
+    }
+
+    to{
+        transform:
+            translate(-50%,-50%)
+            scale(1.08);
+    }
+}
+
+
+/* =====================================================
+   RAMO
+===================================================== */
+
+.bouquet{
+    position:absolute;
+
+    left:50%;
+    top:61%;
+
+    width:350px;
+    height:390px;
+
+    transform:
+        translate(-50%,-50%);
+
+    z-index:20;
+}
+
+
+/* =====================================================
+   TALLOS
+===================================================== */
+
+.stem{
+    position:absolute;
+
+    bottom:0;
+    left:50%;
+
+    width:8px;
+    height:270px;
+
+    transform-origin:bottom;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #174b17,
+            #50ad31,
+            #173e14
+        );
+
+    box-shadow:
+        0 0 7px rgba(60,190,50,.25);
+}
+
+.stem:nth-child(1){
+    transform:rotate(-27deg);
+}
+
+.stem:nth-child(2){
+    transform:rotate(-17deg);
+}
+
+.stem:nth-child(3){
+    transform:rotate(-7deg);
+}
+
+.stem:nth-child(4){
+    transform:rotate(7deg);
+}
+
+.stem:nth-child(5){
+    transform:rotate(17deg);
+}
+
+.stem:nth-child(6){
+    transform:rotate(27deg);
+}
+
+
+/* =====================================================
+   HOJAS
+===================================================== */
+
+.leaf{
+    position:absolute;
+
+    width:76px;
+    height:38px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #65c936,
+            #267c21 55%,
+            #0d4014
+        );
+
+    border-radius:
+        100% 0 100% 0;
+
+    box-shadow:
+        inset 0 0 5px rgba(255,255,255,.1),
+        0 5px 7px rgba(0,0,0,.45);
+}
+
+.leaf::after{
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+    height:75%;
+
+    left:50%;
+    top:15%;
+
+    background:
+        rgba(170,240,100,.35);
+
+    transform:rotate(-30deg);
+}
+
+.l1{
+    left:25px;
+    bottom:55px;
+    transform:rotate(-45deg);
+}
+
+.l2{
+    left:0;
+    bottom:105px;
+    transform:rotate(-70deg);
+}
+
+.l3{
+    left:48px;
+    bottom:145px;
+    transform:rotate(-30deg);
+}
+
+.l4{
+    left:82px;
+    bottom:85px;
+    transform:rotate(-65deg);
+}
+
+.l5{
+    right:25px;
+    bottom:55px;
+    transform:rotate(45deg);
+}
+
+.l6{
+    right:0;
+    bottom:105px;
+    transform:rotate(70deg);
+}
+
+.l7{
+    right:48px;
+    bottom:145px;
+    transform:rotate(30deg);
+}
+
+.l8{
+    right:82px;
+    bottom:85px;
+    transform:rotate(65deg);
+}
+
+.l9{
+    left:105px;
+    bottom:35px;
+    transform:rotate(-35deg);
+}
+
+.l10{
+    right:105px;
+    bottom:35px;
+    transform:rotate(35deg);
+}
+
+
+/* =====================================================
+   GIRASOLES
+===================================================== */
+
+.flower{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    animation:
+        flowerSway 4s ease-in-out infinite;
+}
+
+@keyframes flowerSway{
+
+    0%,100%{
+        transform:rotate(-2deg);
+    }
+
+    50%{
+        transform:rotate(2deg);
+    }
+}
+
+.f1{
+    left:0;
+    top:115px;
+}
+
+.f2{
+    left:82px;
+    top:35px;
+
+    animation-delay:.3s;
+}
+
+.f3{
+    right:0;
+    top:115px;
+
+    animation-delay:.7s;
+}
+
+.f4{
+    left:55px;
+    top:135px;
+
+    animation-delay:1s;
+}
+
+.f5{
+    right:52px;
+    top:145px;
+
+    animation-delay:1.4s;
+}
+
+.f6{
+    left:125px;
+    top:195px;
+
+    animation-delay:.6s;
+}
+
+
+/* =====================================================
+   PETALOS DE GIRASOL
+===================================================== */
+
+.petal{
+    position:absolute;
+
+    width:31px;
+    height:55px;
+
+    left:50%;
+    top:50%;
+
+    transform-origin:
+        50% 100%;
+
+    border-radius:
+        60% 60% 45% 45%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff72e,
+            #ffd000 48%,
+            #ff9a00
+        );
+
+    box-shadow:
+        0 0 7px rgba(255,220,20,.8),
+        inset 0 -7px 8px rgba(255,100,0,.18);
+}
+
+.petal:nth-child(1){
+    transform:
+        translate(-50%,-100%)
+        rotate(0deg);
+}
+
+.petal:nth-child(2){
+    transform:
+        translate(-50%,-100%)
+        rotate(45deg);
+}
+
+.petal:nth-child(3){
+    transform:
+        translate(-50%,-100%)
+        rotate(90deg);
+}
+
+.petal:nth-child(4){
+    transform:
+        translate(-50%,-100%)
+        rotate(135deg);
+}
+
+.petal:nth-child(5){
+    transform:
+        translate(-50%,-100%)
+        rotate(180deg);
+}
+
+.petal:nth-child(6){
+    transform:
+        translate(-50%,-100%)
+        rotate(225deg);
+}
+
+.petal:nth-child(7){
+    transform:
+        translate(-50%,-100%)
+        rotate(270deg);
+}
+
+.petal:nth-child(8){
+    transform:
+        translate(-50%,-100%)
+        rotate(315deg);
+}
+
+
+/* =====================================================
+   CENTRO DEL GIRASOL
+===================================================== */
+
+.center{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%);
+
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #a8641d,
+            #4a220c 55%,
+            #160803
+        );
+
+    border:
+        2px solid #c68125;
+
+    box-shadow:
+        0 0 10px rgba(0,0,0,.8),
+        inset 0 0 8px #100500;
+
+    z-index:10;
+}
+
+
+/* =====================================================
+   PETALOS QUE CAEN
+===================================================== */
+
+.petal-fall{
+    position:absolute;
+
+    width:16px;
+    height:9px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:#ffd522;
+
+    box-shadow:
+        0 0 8px #ffc400,
+        0 0 18px rgba(255,200,0,.5);
+
+    z-index:15;
+
+    animation:
+        fall linear infinite;
+}
+
+@keyframes fall{
+
+    0%{
+        transform:
+            translateY(-20px)
+            rotate(0deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+            translateY(110vh)
+            translateX(130px)
+            rotate(720deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   MENSAJE
+===================================================== */
+
+.message{
+    position:absolute;
+
+    bottom:24px;
+
+    left:50%;
+
+    transform:
+        translateX(-50%);
+
+    width:90%;
+
+    max-width:390px;
+
+    text-align:center;
+
+    z-index:200;
+}
+
+.message .mini{
+    color:#ffd52d;
+
+    font-family:Arial,sans-serif;
+
+    font-size:11px;
+
+    letter-spacing:4px;
+
+    margin-bottom:9px;
+}
+
+.message h2{
+    color:#fff4c1;
+
+    font-size:18px;
+
+    line-height:1.35;
+
+    text-shadow:
+        0 0 8px rgba(255,210,50,.65);
+}
+
+.heart{
+    display:block;
+
+    margin-top:8px;
+
+    color:#ffd52d;
+
+    font-size:22px;
+
+    text-shadow:
+        0 0 10px #ffd000,
+        0 0 20px #ff9900;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:390px){
+
+    .bouquet{
+        transform:
+            translate(-50%,-50%)
+            scale(.83);
+
+        top:60%;
+    }
+
+    .halo{
+        transform:
+            translate(-50%,-50%)
+            scale(.82);
+    }
+
+    .orbit{
+        transform:
+            translate(-50%,-50%)
+            scale(.82)
+            rotate(-20deg);
+    }
+
+    .player{
+        top:140px;
+    }
+
+    .message{
+        bottom:18px;
+    }
+
+    .message h2{
+        font-size:16px;
+    }
+
+    .header h1{
+        font-size:40px;
+    }
+
+}
+
+
+/* =====================================================
+   PANTALLAS MUY ALTAS
+===================================================== */
+
+@media(min-height:800px){
+
+    .bouquet{
+        top:59%;
+    }
+
+    .message{
+        bottom:30px;
+    }
+
+}
+
+
+/* =====================================================
+   AJUSTE FINAL DEL RAMO — FLORES MÁS ORDENADAS
+===================================================== */
+
+.bouquet{
+    width:360px;
+    height:370px;
+    top:60%;
+    transform:translate(-50%,-50%);
+}
+
+/* Tallos detrás de todo el ramo */
+.bouquet .stem{
+    z-index:0;
+}
+
+/* Hojas en una capa intermedia */
+.bouquet .leaf{
+    z-index:1;
+}
+
+/* Todas las flores por encima de tallos y hojas */
+.bouquet .flower{
+    width:90px;
+    height:90px;
+    z-index:5;
+}
+
+/* Distribución en forma de ramo: 3 atrás + 3 adelante */
+.bouquet .f1{
+    left:22px;
+    top:78px;
+    transform:scale(.88);
+}
+
+.bouquet .f2{
+    left:135px;
+    top:8px;
+    transform:scale(.88);
+    z-index:4;
+}
+
+.bouquet .f3{
+    right:22px;
+    top:78px;
+    transform:scale(.88);
+}
+
+.bouquet .f4{
+    left:70px;
+    top:142px;
+    transform:scale(.96);
+    z-index:7;
+}
+
+.bouquet .f5{
+    right:70px;
+    top:142px;
+    transform:scale(.96);
+    z-index:7;
+}
+
+.bouquet .f6{
+    left:135px;
+    top:190px;
+    width:100px;
+    height:100px;
+    z-index:9;
+}
+
+/* Pétalos más redondeados y con mejor profundidad */
+.bouquet .petal{
+    width:29px;
+    height:51px;
+    border-radius:65% 65% 48% 48%;
+    box-shadow:
+        0 2px 7px rgba(255,150,0,.35),
+        0 0 8px rgba(255,220,20,.7),
+        inset 0 -8px 9px rgba(255,100,0,.16);
+}
+
+/* Centros ligeramente más naturales */
+.bouquet .center{
+    width:38px;
+    height:38px;
+    background:
+        radial-gradient(circle at 35% 30%,
+            #b87320 0%,
+            #71350d 42%,
+            #321305 70%,
+            #120601 100%);
+}
+
+/* Hojas algo más naturales y alejadas del texto */
+.bouquet .l1{ left:12px; bottom:48px; transform:rotate(-48deg); }
+.bouquet .l2{ left:2px; bottom:98px; transform:rotate(-68deg); }
+.bouquet .l3{ left:52px; bottom:140px; transform:rotate(-30deg); }
+.bouquet .l4{ left:88px; bottom:78px; transform:rotate(-58deg); }
+.bouquet .l5{ right:12px; bottom:48px; transform:rotate(48deg); }
+.bouquet .l6{ right:2px; bottom:98px; transform:rotate(68deg); }
+.bouquet .l7{ right:52px; bottom:140px; transform:rotate(30deg); }
+.bouquet .l8{ right:88px; bottom:78px; transform:rotate(58deg); }
+.bouquet .l9{ left:105px; bottom:25px; transform:rotate(-34deg); }
+.bouquet .l10{ right:105px; bottom:25px; transform:rotate(34deg); }
+
+/* Evita que el ramo tape el mensaje */
+.message{
+    bottom:20px;
+    max-width:400px;
+}
+
+@media(max-width:390px){
+    .bouquet{
+        width:360px;
+        height:370px;
+        top:59%;
+        transform:translate(-50%,-50%) scale(.78);
+    }
+
+    .message{
+        bottom:14px;
+    }
+}
+
+@media(min-height:800px){
+    .bouquet{
+        top:58%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     PANTALLA INICIAL
+===================================================== -->
+
+<div class="intro" id="intro">
+
+    <h1>
+        Tengo algo<br>
+        para ti 🌻
+    </h1>
+
+    <p>
+        UN PEQUEÑO DETALLE ESPECIAL
+    </p>
+
+    <button
+        class="open"
+        onclick="openGift()">
+
+        ✨ Toca para descubrirlo
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================================
+     GALAXIA
+===================================================== -->
+
+<div class="galaxy">
+
+
+    <div class="nebula n1"></div>
+    <div class="nebula n2"></div>
+    <div class="nebula n3"></div>
+
+
+    <!-- ESTRELLAS -->
+
+    <div id="stars"></div>
+
+
+    <!-- ESTRELLAS GRANDES -->
+
+    <div
+        class="sparkle"
+        style="left:8%;top:17%">
+        ✦
+    </div>
+
+    <div
+        class="sparkle"
+        style="right:8%;top:30%">
+        ✦
+    </div>
+
+    <div
+        class="sparkle"
+        style="left:12%;top:57%">
+        ✦
+    </div>
+
+    <div
+        class="sparkle"
+        style="right:14%;top:70%">
+        ✦
+    </div>
+
+
+    <!-- ORBITA -->
+
+    <div class="orbit"></div>
+
+
+    <!-- =================================================
+         TITULO
+    ================================================== -->
+
+    <div class="header">
+
+        <h1>
+            Flores<br>
+            Para Ti 🌻
+        </h1>
+
+        <p>
+            PEQUEÑOS DETALLES, GRANDES EMOCIONES
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         REPRODUCTOR
+    ================================================== -->
+
+    <div class="player">
+
+        <div class="player-content">
+
+
+            <div class="album">
+                🌻
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-title">
+                    Yellow 💛
+                </div>
+
+                <div class="song-sub">
+                    Una canción para acompañar este detalle...
+                </div>
+
+            </div>
+
+
+            <button
+                class="play"
+                id="playBtn"
+                onclick="toggleMusic()">
+
+                ▶
+
+            </button>
+
+        </div>
+
+
+        <div
+            class="progress"
+            id="progress">
+
+            <div
+                class="progress-bar"
+                id="progressBar">
+            </div>
+
+        </div>
+
+
+        <div class="times">
+
+            <span id="currentTime">
+                0:00
+            </span>
+
+            <span id="duration">
+                0:00
+            </span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         AUDIO REAL
+    ================================================== -->
+
+    <audio
+        id="music"
+        src="yellow.mp3">
+    </audio>
+
+
+
+    <!-- =================================================
+         HALO
+    ================================================== -->
+
+    <div class="halo"></div>
+
+
+
+    <!-- =================================================
+         RAMO
+    ================================================== -->
+
+    <div class="bouquet">
+
+
+        <!-- TALLOS -->
+
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+        <div class="stem"></div>
+
+
+        <!-- HOJAS -->
+
+        <div class="leaf l1"></div>
+        <div class="leaf l2"></div>
+        <div class="leaf l3"></div>
+        <div class="leaf l4"></div>
+
+        <div class="leaf l5"></div>
+        <div class="leaf l6"></div>
+        <div class="leaf l7"></div>
+        <div class="leaf l8"></div>
+
+        <div class="leaf l9"></div>
+        <div class="leaf l10"></div>
+
+
+
+        <!-- =================================================
+             GIRASOL 1
+        ================================================== -->
+
+        <div class="flower f1">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+
+
+        <!-- GIRASOL 2 -->
+
+        <div class="flower f2">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+
+
+        <!-- GIRASOL 3 -->
+
+        <div class="flower f3">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+
+
+        <!-- GIRASOL 4 -->
+
+        <div class="flower f4">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+
+
+        <!-- GIRASOL 5 -->
+
+        <div class="flower f5">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+
+
+        <!-- GIRASOL 6 -->
+
+        <div class="flower f6">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="center"></div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         PETALOS QUE CAEN
+    ================================================== -->
+
+    <div
+        class="petal-fall"
+        style="left:5%;animation-duration:7s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:18%;animation-duration:9s;animation-delay:2s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:31%;animation-duration:6s;animation-delay:1s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:48%;animation-duration:10s;animation-delay:3s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:65%;animation-duration:7s;animation-delay:1s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:79%;animation-duration:9s;animation-delay:4s">
+    </div>
+
+    <div
+        class="petal-fall"
+        style="left:94%;animation-duration:6s;animation-delay:2s">
+    </div>
+
+
+
+    <!-- =================================================
+         MENSAJE
+    ================================================== -->
+
+    <div class="message">
+
+        <div class="mini">
+            PARA TI ❤️
+        </div>
+
+        <h2>
+            “Que estas flores te recuerden
+            lo hermosa que es la vida
+            cuando tenemos a alguien especial
+            por quien sonreír.”
+        </h2>
+
+        <span class="heart">
+            ─── ♥ ───
+        </span>
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   GENERAR ESTRELLAS
+===================================================== */
+
+const stars =
+    document.getElementById("stars");
+
+
+for(let i = 0; i < 120; i++){
+
+    const star =
+        document.createElement("div");
+
+    star.className = "star";
+
+
+    const size =
+        Math.random() * 3 + 1;
+
+
+    star.style.width =
+        size + "px";
+
+    star.style.height =
+        size + "px";
+
+
+    star.style.left =
+        Math.random() * 100 + "%";
+
+
+    star.style.top =
+        Math.random() * 100 + "%";
+
+
+    star.style.animationDelay =
+        Math.random() * 4 + "s";
+
+
+    stars.appendChild(star);
+
+}
+
+
+
+/* =====================================================
+   ABRIR EL REGALO
+===================================================== */
+
+function openGift(){
+
+    document
+        .getElementById("intro")
+        .classList.add("hide");
+
+    /* El clic del usuario permite iniciar el audio en móviles */
+    music.play()
+        .then(() => {
+            playBtn.innerHTML = "❚❚";
+        })
+        .catch(() => {
+            /* Si el navegador bloquea el audio, se puede iniciar
+               manualmente desde el botón del reproductor. */
+        });
+
+}
+
+
+
+/* =====================================================
+   REPRODUCTOR
+===================================================== */
+
+const music =
+    document.getElementById("music");
+
+const playBtn =
+    document.getElementById("playBtn");
+
+const progressBar =
+    document.getElementById("progressBar");
+
+const progress =
+    document.getElementById("progress");
+
+const currentTime =
+    document.getElementById("currentTime");
+
+const duration =
+    document.getElementById("duration");
+
+
+
+/* =====================================================
+   PLAY / PAUSA
+===================================================== */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play()
+        .then(() => {
+
+            playBtn.innerHTML = "❚❚";
+
+        })
+        .catch(() => {
+
+            alert(
+                "No se encontró el archivo yellow.mp3. " +
+                "Colócalo en la misma carpeta que este HTML."
+            );
+
+        });
+
+    }
+
+    else{
+
+        music.pause();
+
+        playBtn.innerHTML = "▶";
+
+    }
+
+}
+
+
+
+/* =====================================================
+   CUANDO CARGA EL AUDIO
+===================================================== */
+
+music.addEventListener(
+    "loadedmetadata",
+    function(){
+
+        duration.textContent =
+            formatTime(music.duration);
+
+    }
+);
+
+
+
+/* =====================================================
+   ACTUALIZAR BARRA
+===================================================== */
+
+music.addEventListener(
+    "timeupdate",
+    function(){
+
+        if(!music.duration) return;
+
+
+        const percent =
+            (music.currentTime /
+            music.duration) * 100;
+
+
+        progressBar.style.width =
+            percent + "%";
+
+
+        currentTime.textContent =
+            formatTime(music.currentTime);
+
+    }
+);
+
+
+
+/* =====================================================
+   CLICK EN LA BARRA
+===================================================== */
+
+progress.addEventListener(
+    "click",
+    function(event){
+
+        if(!music.duration) return;
+
+
+        const rect =
+            progress.getBoundingClientRect();
+
+
+        const clickPosition =
+            event.clientX - rect.left;
+
+
+        const percent =
+            clickPosition / rect.width;
+
+
+        music.currentTime =
+            percent * music.duration;
+
+    }
+);
+
+
+
+/* =====================================================
+   CUANDO TERMINA
+===================================================== */
+
+music.addEventListener(
+    "ended",
+    function(){
+
+        playBtn.innerHTML = "▶";
+
+        progressBar.style.width = "0%";
+
+        currentTime.textContent =
+            "0:00";
+
+    }
+);
+
+
+
+/* =====================================================
+   FORMATO DEL TIEMPO
+===================================================== */
+
+function formatTime(seconds){
+
+    if(isNaN(seconds)){
+        return "0:00";
+    }
+
+
+    const minutes =
+        Math.floor(seconds / 60);
+
+
+    const secondsFormatted =
+        Math.floor(seconds % 60)
+        .toString()
+        .padStart(2,"0");
+
+
+    return (
+        minutes +
+        ":" +
+        secondsFormatted
+    );
+
+}
+
+</script>
+
+</body>
+</html>
